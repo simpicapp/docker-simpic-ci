@@ -10,7 +10,8 @@ RUN apt-get update \
     # For chrome:
     && apt-get --no-install-recommends -y install fonts-liberation libappindicator3-1 xdg-utils \
     # For building the project:
-    && apt-get --no-install-recommends -y install git npm \
+    && curl -sL https://deb.nodesource.com/setup_13.x | bash - \
+    && apt-get --no-install-recommends -y install git nodejs \
     # Chrome:
     && wget -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" \
     && dpkg -i /usr/src/google-chrome-stable_current_amd64.deb \
