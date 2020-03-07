@@ -6,12 +6,32 @@ ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 RUN apt-get update \
     # For semaphore:
-    && apt-get --no-install-recommends -y install openssh-client lftp coreutils \
+    && apt-get --no-install-recommends -y install \
+	openssh-client \
+	lftp \
+	coreutils \
+    # For cypress:
+    && apt-get --no-install-recommends -y install \
+	libgtk2.0-0 \
+	libgtk-3-0 \
+	libnotify-dev \
+	libgconf-2-4 \
+	libnss3 \
+	libxss1 \
+	libasound2 \
+	libxtst6 \
+	xauth \
+	xvfb \
     # For chrome:
-    && apt-get --no-install-recommends -y install fonts-liberation libappindicator3-1 xdg-utils \
+    && apt-get --no-install-recommends -y install \
+	fonts-liberation \
+	libappindicator3-1 \
+	xdg-utils \
     # For building the project:
     && curl -sL https://deb.nodesource.com/setup_13.x | bash - \
-    && apt-get --no-install-recommends -y install git nodejs \
+    && apt-get --no-install-recommends -y install \
+	git \
+	nodejs \
     # Chrome:
     && wget -O /usr/src/google-chrome-stable_current_amd64.deb "http://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_${CHROME_VERSION}-1_amd64.deb" \
     && dpkg -i /usr/src/google-chrome-stable_current_amd64.deb \
